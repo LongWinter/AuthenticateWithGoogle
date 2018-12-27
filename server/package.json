@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server script",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Ye Yuan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
