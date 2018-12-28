@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "server script",
   "main": "index.js",
+  "engines":{ 
+    "node": "8.9.4",
+    "npm": "6.2.0"
+  },
   "scripts": {
-    "test": "test"
+    "start": "node index.js"
   },
   "keywords": [
     "node"
