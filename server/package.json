@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "server script",
   "main": "index.js",
-  "engines":{ 
+  "engines": {
     "node": "8.9.4",
-    "npm": "6.2.0"
+    "npm": "6.5.0"
   },
   "scripts": {
     "start": "node index.js"
@@ -17,5 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "repository": "https://github.com/Longwinter/react.git"
 }
