@@ -11,3 +11,12 @@
 
 ### NOTE:
 -   Google OAuth API is part of the Google+ API set
+
+# Server code structure - refactor one single index.js to better organized structures
+
+## config: 
+- protected API keys and settings(not committed to Github)
+## routes:
+- all route handlers, grouped by purposes
+## services:
+- helper modules and business logic (e.g. passport configuration that helps handling google authentication)
