@@ -36,3 +36,6 @@
 ## services:
 
 - helper modules and business logic (e.g. passport configuration that helps handling google authentication)
+
+## models:
+- contains mongoose models that represents a mongoDB collection
