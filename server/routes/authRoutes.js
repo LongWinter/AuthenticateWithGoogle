@@ -15,4 +15,15 @@ module.exports = app => {
 
   // when hitting this endpoint, there will be a code attached which will be used by passport so that we can retrieve user's information on there behalf
   app.get("/auth/google/callback", passport.authenticate("google"));
+
+  app.get("/api/logout", (req, res) => { 
+    // logout() function is attached by passport
+    // then req.user will be detached from req which means user is no longer signed in
+    req.logout();
+    res.send(req.user);
+  });
+
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  }); 
 };
