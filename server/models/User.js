@@ -9,4 +9,8 @@ const userSchema = new Schema({
   googleID: String
 });
 
+/**
+ * this loads users schema into mongoose so that we can pull this model out of mongoose by;
+ * mongoose.model("users")
+ */
 mongoose.model("users", userSchema);

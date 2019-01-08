@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('./models/User');
 // require passport.js file to make use of it in this project, since we are not returning anything ==> we don't need to assign it to a const var
 require("./services/passport");
 // require mongoose
-require('./models/User');
 const keys = require("./config/key");
 
 // connect our remote mongoDB Atlas

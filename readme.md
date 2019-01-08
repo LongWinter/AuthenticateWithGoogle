@@ -18,6 +18,13 @@
 - A model class has a bunch of functions that designed to work with an entire collection (create new records, searching records)
 - Model instances are all javascript objects that represents single records in a mongo collection
 - In practice, we use one class to represent one collection of mongoDB.
+- when we need to use our mongoose model inside other files, we normally do it by requiring it again, but this may create error in testing environment, so we need to treat them specially.
+
+### Promise:
+- a promise is a tool that is used to handle JavaScript Asynchronous code.
+
+### Cookies:
+-   add cookie-session pakage using npm
 
 ### NOTE:
 
