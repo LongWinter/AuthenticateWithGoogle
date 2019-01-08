@@ -1,20 +1,32 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require('./models/User');
+const keys = require("./config/key");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+require("./models/User");
 // require passport.js file to make use of it in this project, since we are not returning anything ==> we don't need to assign it to a const var
 require("./services/passport");
-// require mongoose
-const keys = require("./config/key");
 
 // connect our remote mongoDB Atlas
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+mongoose.connect(
+  keys.mongoURI,
+  { useNewUrlParser: true }
+);
 // require that function we exported from authRoutes.js so that we can call that function
-// a better way to do this is: require('./routes/authRoutes')(app) and put this after where we declare app, but it doesn't look user friendly to me
-const authRoutes = require("./routes/authRoutes");
+// a better way to do this is: require('./routes/authRoutes')(app) and put this after where we declare app
+// const authRoutes = require("./routes/authRoutes");
 
 const app = express();
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    keys: [keys.cookieKey] // we can add multiple keys and it will use one randomly for more security
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-authRoutes(app);
+require("./routes/authRoutes")(app);
 
 // enable dynamic port binding
 // if there is any environment variable that is predifined, then use that environment variable as our port
