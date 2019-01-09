@@ -21,10 +21,21 @@
 - when we need to use our mongoose model inside other files, we normally do it by requiring it again, but this may create error in testing environment, so we need to treat them specially.
 
 ### Promise:
+
 - a promise is a tool that is used to handle JavaScript Asynchronous code.
 
 ### Cookies:
--   add cookie-session pakage using npm
+
+- add cookie-session pakage using npm
+- there are 2 different approaches to use cookies:
+  - cookie-session: the cookie contains all the information, here, we store id (4KB maximum )
+  - express-session: the cookie contains a reference to a session (stored in a remote database), so we can store a large amount of data
+- in this application, cookie-session makes sense because all we care is user's id
+
+### Middleware:
+
+- `app.use()`
+- middleswares are small functions that are used to modify incoming requests to our app before they are sent out to route handlers
 
 ### NOTE:
 
@@ -35,6 +46,12 @@
 ## config:
 
 - protected API keys and settings(not committed to Github)
+- further divided into two set of keys:
+  - one for dev environment 
+  - one for prod environment
+- keys.js will have some logic to tell which environment are you in
+  - if prod, then use env variables
+  - if dev, then use config/dev.js ==> this won't be committed
 
 ## routes:
 
@@ -45,4 +62,7 @@
 - helper modules and business logic (e.g. passport configuration that helps handling google authentication)
 
 ## models:
+
 - contains mongoose models that represents a mongoDB collection
+
+# Dev vs. Prod
