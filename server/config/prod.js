@@ -8,5 +8,6 @@ module.exports = {
   // mongodb atlas config
   mongoURI: process.env.MONGO_URI,
   // cookie key
-  cookieKey: process.env.COOKIE_KEY
+  cookieKey: process.env.COOKIE_KEY,
+  callBackURL: "https://glacial-lowlands-82279.herokuapp.com/auth/google/callback"
 };

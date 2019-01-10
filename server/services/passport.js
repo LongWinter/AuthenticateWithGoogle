@@ -23,7 +23,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      // this is a relative path that might cause http/https problem, so we need to add one more configuration(proxy: true ==> ask it to trust the proxy) to make it use HTTPs (or make it absolute path)
+      callbackURL: keys.callBackURL
     },
     // this accessToken is used when we successfully signed in with Google
     // so we can do a lot of things with this: added to our database and etc...
