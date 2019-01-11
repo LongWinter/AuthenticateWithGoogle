@@ -4,12 +4,14 @@
   "description": "server script",
   "main": "index.js",
   "engines": {
-    "node": "8.9.4",
-    "npm": "6.5.0"
+    "node": "10.15.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "node"
@@ -17,6 +19,7 @@
   "author": "Ye Yuan",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.2",
