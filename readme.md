@@ -47,7 +47,7 @@
 
 - protected API keys and settings(not committed to Github)
 - further divided into two set of keys:
-  - one for dev environment 
+  - one for dev environment
   - one for prod environment
 - keys.js will have some logic to tell which environment are you in
   - if prod, then use env variables
@@ -66,6 +66,48 @@
 - contains mongoose models that represents a mongoDB collection
 
 # Dev vs. Prod
+
 ## in dev mode, I am using a proxy which forward requests made to localhost:3000 to localhost:5000 (where API runs), this way, I don't need to worry about cookie issue (by browser default, cookies are included if I make request to same origin. So we don't need to manually include the cookies)
+
 ## in prod mode, since client is inside server, all the requests will be going to same address. So we don't need to worry about cookie at all. No cross origin issues.
+
 ## also, by using proxy, I don't need to worried about CORS(corss origin resource sharing)
+
+# ES2017 Async/Await Syntax
+
+## old syntax
+
+```
+function fetchAPI() {
+  fetch("https://rallycoding.herokuapp.com/api/music_albums")
+    .then(res => res.json())
+    .then(json => console.log(json));
+}
+
+fetchAPI();
+```
+
+## new syntax
+
+```
+async function fetchAPI() {
+  const res = await fetch("https://rallycoding.herokuapp.com/api/music_albums");
+  const json = await res.json();
+
+  console.log(json);
+}
+
+fetchAPI();
+```
+
+## after using arrow function
+```
+const fetchAPI = async () => {
+  const res = await fetch("https://rallycoding.herokuapp.com/api/music_albums");
+  const json = await res.json();
+
+  console.log(json);
+}
+
+fetchAPI();
+```
