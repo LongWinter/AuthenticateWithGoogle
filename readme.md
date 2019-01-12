@@ -66,3 +66,6 @@
 - contains mongoose models that represents a mongoDB collection
 
 # Dev vs. Prod
+## in dev mode, I am using a proxy which forward requests made to localhost:3000 to localhost:5000 (where API runs), this way, I don't need to worry about cookie issue (by browser default, cookies are included if I make request to same origin. So we don't need to manually include the cookies)
+## in prod mode, since client is inside server, all the requests will be going to same address. So we don't need to worry about cookie at all. No cross origin issues.
+## also, by using proxy, I don't need to worried about CORS(corss origin resource sharing)
