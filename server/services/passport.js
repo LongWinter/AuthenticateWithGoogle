@@ -12,10 +12,9 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
+passport.deserializeUser(async (id, done) => {
+  const user = await User.findById(id);
+  done(null, user);
 });
 
 passport.use(
@@ -29,25 +28,23 @@ passport.use(
     // this accessToken is used when we successfully signed in with Google
     // so we can do a lot of things with this: added to our database and etc...
     // refresh token allows us to refresh the access token
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       console.log("access token", accessToken);
       console.log("refresh token", refreshToken);
       console.log("profile: ", profile);
-      User.findOne({ googleID: profile.id }).then(existingUser => {
-        if (existingUser) {
-          // we already have a record with the given profile ID
+      let existingUser = await User.findOne({ googleID: profile.id });
 
-          // first argument is error, second will be user record
-          // since here we found one user, no error ==> null
-          done(null, existingUser);
-        } else {
-          // we don't have a existing ID, so make a new record
-          // take the model instance and save it to mongodb (this is async so ....)
-          new User({ googleID: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+      if (existingUser) {
+        // we already have a record with the given profile ID
+        // first argument is error, second will be user record
+        // since here we found one user, no error ==> null
+        done(null, existingUser);
+      } else {
+        // we don't have a existing ID, so make a new record
+        // take the model instance and save it to mongodb (this is async so ....)
+        const user = await new User({ googleID: profile.id }).save();
+        done(null, user);
+      }
     }
   )
 );
