@@ -19,7 +19,7 @@ mongoose.connect(
 const app = express();
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    maxAge: 10*60*1000, // 10 minutes 
     keys: [keys.cookieKey] // we can add multiple keys and it will use one randomly for more security
   })
 );
