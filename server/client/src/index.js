@@ -7,11 +7,12 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 
 import App from "./components/App";
+import reducers from "./reducers";
 
 // first parameter is all the reducers
 // second parameter is the initial state of our application
 // third parameter is the store enhancer that apply middleware to the dispatch method of the redux store
-const store = createStore(() => [], {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware());
 
 ReactDOM.render(
   // pass the store we just created as a prop
