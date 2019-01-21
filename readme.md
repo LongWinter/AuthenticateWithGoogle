@@ -7,8 +7,9 @@
 - passport strategy
   - helpers for authenticating with one very specific method (email/password, Google, Facebook, etc)
   - at least one passport stretegy for 1 specific stretegies (1 for google, 1 for facebook, etc...)
-
-`http://www.passportjs.org/`
+  - `http://www.passportjs.org/`
+- axios library: helping us to make api request/ AJAX
+- redux-thunk: make asynchronous action creators behave the way we want
 
 ### MongoDB and Mongoose:
 
@@ -117,10 +118,13 @@ fetchAPI();
 -   redux store: all our states resides
     -   to determine or change the current state, we call an action creator which dispatch an action.
     -   the action is sent to all different reducers inside our application
+        -   the purpose of an action creator is to return an action that gets sent to all the differnt reducers
     -   reducers are combined together with the combinedReducers' call to update the state in redux store
+- redux-thunk: allow us to manually dispactch an event
 -   An react component will call an action creator that will return an action which will be sent to all different reducers and then update all the states inside redux store. 
 -   After updating the states inside our store, the states will be sent back to the react compoenents to render/display possible new contents on the screen
+  
 ## Behind the scene
 -   inside our index.js file: we create redux store and we render a provider tag 
 -   the provider tag is a react component that is provided to us by the react-redux library (this library makes sure that react and redux works together nicely)
--   since this provider tag is at the very top level of our application, other components can easily pull information from this provider(that is our store essentially)
+-   since this provider tag is at the very top level of our application, other components can easily pull information from this provider(that is our store )
